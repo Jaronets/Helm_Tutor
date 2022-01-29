@@ -1,0 +1,59 @@
+HELM Guide Commands
+
+SEARCH
+Buscar Charts en Repos
+helm search hub squid
+
+ADD REPOS
+Adicionar Repo de Charts 
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
+SHOW CONFIGURATIONS
+Mostrar Variables de Configuracion de Chart
+helm show values bitnami/wordpress
+
+Buscar Valores de Variables de configuracion
+helm show values bitnami/wordpress |grep wordpressUser
+
+        ## @param wordpressUsername WordPress username
+        wordpressUsername: user
+
+Otro Ejemplo 
+
+helm show values bitnami/wordpress |grep wordpressPass
+        ## @param wordpressPassword WordPress user password
+        wordpressPassword: ""
+        ## NOTE: When it's set, the `wordpressPassword` parameter is ignored
+
+
+INSTALLS
+        Instalacion base de Chart
+
+DEFAULT
+helm install my-wordpress bitnami/wordpress
+
+CUSTOM
+Usando las Variables de configuracion directamente en el comando de Instalacion
+helm install mywordpress bitnami/wordpress --set wordpressUsername=jaroadmin --set wordpressPassword=55943156 --set port=8080
+
+CUSTOM WITH FILE
+Otra opcion es configurar los valores en un File
+vi install.yml
+ Add Lineas   
+            wordpressUsername:jaroadmin
+            wordpressPassword:55943156
+            port:8080
+
+Save Configuration y ahora ejecutar instalacion con customitations File
+Helm install my-wordpress -f install.yml bitnami/wordpress
+
+UNINSTALL
+Borrar Instalacion
+helm delete mywordpress
+
+
+
+
+
+
+
