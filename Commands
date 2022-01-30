@@ -34,7 +34,7 @@ helm install my-wordpress bitnami/wordpress
 
 CUSTOM
 Usando las Variables de configuracion directamente en el comando de Instalacion
-helm install mywordpress bitnami/wordpress --set wordpressUsername=jaroadmin --set wordpressPassword=55943156 --set port=8080
+helm install mywordpress bitnami/wordpress --set wordpressUsername=jaroadmin --set wordpressPassword=password
 
 CUSTOM WITH FILE
 Otra opcion es configurar los valores en un File
